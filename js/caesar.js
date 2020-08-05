@@ -5,7 +5,14 @@ let word = ""
 let decoded = ""
 
 $('#encodeButton').click(function(){
-    encode($('#encodeArea').val());
+    var text = $('#encodeArea').val();
+    var result = encode(text);
+    var cipherString = "";
+    for(word of result){
+      var codedWord = encode(word);
+      cipherString += codedWord + " ";
+    }
+    $('#decodeArea').val(cipherString);
 })
 
 $('#decodeButton').click(function(){
@@ -17,7 +24,7 @@ function decode(val){
 }
 
 function encode(word){
-    let toCode = word.toUpperCase().trim();
+    let toCode = word;
 
     for(var i = 0; i < word.length; i++){
         let letter = toCode[i];
@@ -29,5 +36,15 @@ function encode(word){
         }
         decoded += cipher;
       }
-      $('#decodeArea').val(decoded);
+     return decoded;
+}
+
+function codify(value){
+  var words = value.split(' ');
+  var result = []
+  for(word of words){
+    result.push(word.toUpperCase().trim())
+  }
+
+  return result;
 }
