@@ -1,8 +1,15 @@
+body, html{
+    background-color: black;
+    background-image: url('../assets/hackerbackground.jpg');
+    background-size: cover;
+    position: relative;
+}
+
 .container{
     display: flex;
     flex-direction: column;
     position: relative;
-    margin-top: 5vh;
+    margin-top: 14vh;
     width: 80vh;
     height: 60vh;
     text-align: center;
@@ -10,15 +17,10 @@
     background-size: cover;
 }
 
-.particles{
-    position: relative;
-}
-
 .main{
     width: 100%;
     height: 100%;            
     position: absolute;
-    top: 0;
     display: flex;
     left: 0;
 }
@@ -54,7 +56,12 @@
 ::selection {
     background: #0080FF;
     text-shadow: none;
-  }
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1; /* Firefox */
+}
 
 pre{
     margin: 0;

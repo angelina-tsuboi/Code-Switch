@@ -5,18 +5,26 @@ var shift = 3;
 let word = ""
 let decoded = ""
 
-$('#encodeButton').click(function(){
-    var text = $('#encodeArea').val();
-    let decodedPhrase = codify(text.trim());
-    $('#decodeArea').val(decodedPhrase);
 
-})
+$(document).ready(function() {
 
-$('#decodeButton').click(function(){
-  var text = $('#decodeArea').val();
-  let encodedPhrase = encodify(text.trim());
-  $('#encodeArea').val(encodedPhrase);
-})
+  $('#encodeArea').keydown(function() {
+    if (event.keyCode == 13) {
+      var text = $('#encodeArea').val();
+      let decodedPhrase = encodify(text.trim());
+      $('#decodeArea').val(decodedPhrase);
+    }
+  });
+
+  $('#decodeArea').keydown(function() {
+    if (event.keyCode == 13) {
+      var text = $('#decodeArea').val();
+      let encodedPhrase = codify(text.trim());
+      $('#encodeArea').val(encodedPhrase);
+    }
+  });
+});
+
 
 
 function codify(value){
@@ -28,9 +36,12 @@ function codify(value){
       let letter = word[i];
       let cipher = "";
       if(uppercaseLetters.includes(letter)){
-        cipher = uppercaseLetters[uppercaseLetters.indexOf(letter) + shift];
+        let index = uppercaseLetters.indexOf(letter) + shift;
+        index > uppercaseLetters.length - 1 ? cipher = uppercaseLetters[index - uppercaseLetters.length] : cipher = uppercaseLetters[index];
+        
       }else if(lowercaseLetters.includes(letter)){
-        cipher = lowercaseLetters[lowercaseLetters.indexOf(letter) + shift];
+        let index = lowercaseLetters.indexOf(letter) + shift;
+        index > lowercaseLetters.length - 1 ? cipher = lowercaseLetters[index - lowercaseLetters.length] : cipher = lowercaseLetters[index];
       }else{
         cipher = letter;
       }
@@ -53,9 +64,11 @@ function encodify(value){
       let letter = word[i];
       let cipher = "";
       if(uppercaseLetters.includes(letter)){
-        cipher = uppercaseLetters[uppercaseLetters.indexOf(letter) - shift];
+        let index = uppercaseLetters.indexOf(letter) - shift;
+        index < 0 ? cipher = uppercaseLetters[uppercaseLetters.length - Math.abs(index)] :  cipher = uppercaseLetters[index];
       }else if(lowercaseLetters.includes(letter)){
-        cipher = lowercaseLetters[lowercaseLetters.indexOf(letter) - shift];
+        let index = lowercaseLetters.indexOf(letter) - shift;
+        index < 0 ? cipher = lowercaseLetters[uppercaseLetters.length - Math.abs(index)] : cipher = lowercaseLetters[index];  
       }else{
         cipher = letter;
       }
