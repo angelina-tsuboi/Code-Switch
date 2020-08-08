@@ -95,3 +95,19 @@
      background-repeat: no-repeat;
    }
    
+
+   .main{
+    position: relative;
+    top: 0;
+    left: 0; 
+   }
+
+   .top{
+    position: absolute;
+   }
+
+   .title{
+     font-size: 5rem;
+     text-align: center;
+     color: white;
+   }
