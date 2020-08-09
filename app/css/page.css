@@ -5,6 +5,11 @@ body, html{
     position: relative;
 }
 
+textarea{
+    text-transform: uppercase !important;
+}
+
+
 .container{
     display: flex;
     flex-direction: column;
@@ -16,6 +21,7 @@ body, html{
     background-image: url('../assets/terminal.png');
     background-size: cover;
 }
+
 
 .main{
     width: 100%;

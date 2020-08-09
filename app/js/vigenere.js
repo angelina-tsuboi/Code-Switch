@@ -14,7 +14,7 @@ $(document).ready(function() {
     $('#encodeArea').keydown(function() {
       if (event.keyCode == 13) {
         var text = $('#encodeArea').val();
-        if(text == "key()" || text == "setKey()"){
+        if(text == "KEY()" || text == "SETKEY()"){
             key = prompt("What should the key be?");
             setUpKey(key.toUpperCase().trim());
         }else{
