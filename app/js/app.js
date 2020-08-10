@@ -1,133 +1,88 @@
-/* -----------------------------------------------
-/* How to use? : Check the GitHub README
-/* ----------------------------------------------- */
+let arrowPos = 0;
 
-/* To load a config file (particles.json) you need to host this demo (MAMP/WAMP/local)... */
-/*
-particlesJS.load('particles-js', 'particles.json', function() {
-  console.log('particles.js loaded - callback');
+
+$(document).ready(function() {
+  updateText(arrowPos);
 });
-*/
+
+document.onkeydown = function(e) {
+  switch(e.which) {
+      case 38: // up
+      if(arrowPos - 1 >= 0){
+        arrowPos--;
+      }
+      updateText(arrowPos);
+      break;
+
+      case 40: // down
+      if(arrowPos + 1 <= 4){
+        arrowPos++;
+      }
+      updateText(arrowPos);
+      break;
+
+      case 13: //enter
+        goTo(arrowPos);
+      break;
+
+      default: return; // exit this handler for other keys
+  }
+  e.preventDefault(); // prevent the default action (scroll / move caret)
+};
+
+
+function updateText(arrowPos){
+  switch(arrowPos){
+    case 0:
+      $('textarea').val('1) Caesar Cipher < \n2) Atbash Cipher \n3) Keyword Cipher \n4) Vigenere Cipher \n5) Polybius Cipher \n ');
+    break;
+
+    case 1:
+      $('textarea').val('1) Caesar Cipher \n2) Atbash Cipher < \n3) Keyword Cipher \n4) Vigenere Cipher \n5) Polybius Cipher \n ');
+    break;
+
+    case 2:
+      $('textarea').val('1) Caesar Cipher \n2) Atbash Cipher \n3) Keyword Cipher < \n4) Vigenere Cipher \n5) Polybius Cipher \n ');
+    break;
+
+    case 3:
+      $('textarea').val('1) Caesar Cipher \n2) Atbash Cipher \n3) Keyword Cipher \n4) Vigenere Cipher < \n5) Polybius Cipher \n ');
+    break;
+
+    case 4:
+      $('textarea').val('1) Caesar Cipher \n2) Atbash Cipher \n3) Keyword Cipher \n4) Vigenere Cipher \n5) Polybius Cipher < \n ');
+    break;
+  }
+}
+
+function goTo(arrowPos){
+  let location = window.location.pathname;
+  let locations = location.split('/');
+  locations.splice(locations.length - 1);
+  let final;
+  switch(arrowPos){
+    case 0:
+      final = locations.join('/').concat('/app/caesar.html');
+      window.location = final;
+      break;
+    case 1:
+      final = locations.join('/').concat('/app/atbash.html');
+      window.location = final;
+      break;
+    case 2:
+      final = locations.join('/').concat('/app/keyword.html');
+      window.location = final;
+      break;
+    case 3:
+      final = locations.join('/').concat('/app/vigenere.html');
+      window.location = final;
+      break;
+    case 4:
+      final = locations.join('/').concat('/app/polybius.html');
+      window.location = final;
+      break;
+  }
+}
+
 
 /* Otherwise just put the config content (json): */
-
-particlesJS('particles-js',
-  
-  {
-    "particles": {
-      "number": {
-        "value": 80,
-        "density": {
-          "enable": true,
-          "value_area": 800
-        }
-      },
-      "color": {
-        "value": "#ffffff"
-      },
-      "shape": {
-        "type": "circle",
-        "stroke": {
-          "width": 0,
-          "color": "#000000"
-        },
-        "polygon": {
-          "nb_sides": 5
-        },
-        "image": {
-          "src": "img/github.svg",
-          "width": 100,
-          "height": 100
-        }
-      },
-      "opacity": {
-        "value": 0.5,
-        "random": false,
-        "anim": {
-          "enable": false,
-          "speed": 1,
-          "opacity_min": 0.1,
-          "sync": false
-        }
-      },
-      "size": {
-        "value": 5,
-        "random": true,
-        "anim": {
-          "enable": false,
-          "speed": 40,
-          "size_min": 0.1,
-          "sync": false
-        }
-      },
-      "line_linked": {
-        "enable": true,
-        "distance": 150,
-        "color": "#ffffff",
-        "opacity": 0.4,
-        "width": 1
-      },
-      "move": {
-        "enable": true,
-        "speed": 6,
-        "direction": "none",
-        "random": false,
-        "straight": false,
-        "out_mode": "out",
-        "attract": {
-          "enable": false,
-          "rotateX": 600,
-          "rotateY": 1200
-        }
-      }
-    },
-    "interactivity": {
-      "detect_on": "canvas",
-      "events": {
-        "onhover": {
-          "enable": true,
-          "mode": "repulse"
-        },
-        "onclick": {
-          "enable": true,
-          "mode": "push"
-        },
-        "resize": true
-      },
-      "modes": {
-        "grab": {
-          "distance": 400,
-          "line_linked": {
-            "opacity": 1
-          }
-        },
-        "bubble": {
-          "distance": 400,
-          "size": 40,
-          "duration": 2,
-          "opacity": 8,
-          "speed": 3
-        },
-        "repulse": {
-          "distance": 200
-        },
-        "push": {
-          "particles_nb": 4
-        },
-        "remove": {
-          "particles_nb": 2
-        }
-      }
-    },
-    "retina_detect": true,
-    "config_demo": {
-      "hide_card": false,
-      "background_color": "#34365f",
-      "background_image": "",
-      "background_position": "50% 50%",
-      "background_repeat": "no-repeat",
-      "background_size": "cover"
-    }
-  }
-
-);

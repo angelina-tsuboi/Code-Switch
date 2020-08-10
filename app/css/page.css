@@ -13,22 +13,21 @@ textarea{
 .container{
     display: flex;
     flex-direction: column;
-    position: relative;
     margin-top: 14vh;
     width: 80vh;
     height: 60vh;
     text-align: center;
+    position: absolute;
     background-image: url('../assets/terminal.png');
     background-size: cover;
 }
 
-
-.main{
-    width: 100%;
-    height: 100%;            
-    position: absolute;
-    display: flex;
-    left: 0;
+#leftContainer{
+    top: 0;
+}
+#rightContainer{
+    top: 0;
+    left: 55vw;
 }
 
 .terminal{
