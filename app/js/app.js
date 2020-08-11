@@ -15,7 +15,7 @@ document.onkeydown = function(e) {
       break;
 
       case 40: // down
-      if(arrowPos + 1 <= 4){
+      if(arrowPos + 1 <= 5){
         arrowPos++;
       }
       updateText(arrowPos);
@@ -34,23 +34,27 @@ document.onkeydown = function(e) {
 function updateText(arrowPos){
   switch(arrowPos){
     case 0:
-      $('textarea').val('1) Caesar Cipher < \n2) Atbash Cipher \n3) Keyword Cipher \n4) Vigenere Cipher \n5) Polybius Cipher \n ');
+      $('textarea').val('1) Caesar Cipher < \n2) Atbash Cipher \n3) Keyword Cipher \n4) Vigenere Cipher \n5) Polybius Cipher \n5) Binary \n');
     break;
 
     case 1:
-      $('textarea').val('1) Caesar Cipher \n2) Atbash Cipher < \n3) Keyword Cipher \n4) Vigenere Cipher \n5) Polybius Cipher \n ');
+      $('textarea').val('1) Caesar Cipher \n2) Atbash Cipher < \n3) Keyword Cipher \n4) Vigenere Cipher \n5) Polybius Cipher \n5) Binary \n ');
     break;
 
     case 2:
-      $('textarea').val('1) Caesar Cipher \n2) Atbash Cipher \n3) Keyword Cipher < \n4) Vigenere Cipher \n5) Polybius Cipher \n ');
+      $('textarea').val('1) Caesar Cipher \n2) Atbash Cipher \n3) Keyword Cipher < \n4) Vigenere Cipher \n5) Polybius Cipher \n5) Binary \n ');
     break;
 
     case 3:
-      $('textarea').val('1) Caesar Cipher \n2) Atbash Cipher \n3) Keyword Cipher \n4) Vigenere Cipher < \n5) Polybius Cipher \n ');
+      $('textarea').val('1) Caesar Cipher \n2) Atbash Cipher \n3) Keyword Cipher \n4) Vigenere Cipher < \n5) Polybius Cipher \n5) Binary \n ');
     break;
 
     case 4:
-      $('textarea').val('1) Caesar Cipher \n2) Atbash Cipher \n3) Keyword Cipher \n4) Vigenere Cipher \n5) Polybius Cipher < \n ');
+      $('textarea').val('1) Caesar Cipher \n2) Atbash Cipher \n3) Keyword Cipher \n4) Vigenere Cipher \n5) Polybius Cipher < \n5) Binary \n ');
+    break;
+
+    case 5:
+      $('textarea').val('1) Caesar Cipher \n2) Atbash Cipher \n3) Keyword Cipher \n4) Vigenere Cipher \n5) Polybius Cipher \n5) Binary <');
     break;
   }
 }
@@ -79,6 +83,11 @@ function goTo(arrowPos){
       break;
     case 4:
       final = locations.join('/').concat('/app/polybius.html');
+      window.location = final;
+      break;
+
+    case 5:
+      final = locations.join('/').concat('/app/binary.html');
       window.location = final;
       break;
   }
